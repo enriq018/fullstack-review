@@ -3,19 +3,24 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Search from './components/Search.jsx';
 import RepoList from './components/RepoList.jsx';
+import mockData from './components/data.json';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      repos: []
+      repos: mockData
     }
 
   }
 
   search (term) {
-    console.log(`${term} was searched`);
+    // console.log(`${term} was searched`);
     // TODO
+    //make post req
+    console.log('ajax post spot', term)
+    console.log(mockData)
+
   }
 
   render () {

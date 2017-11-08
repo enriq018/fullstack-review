@@ -1,9 +1,4 @@
-//name = repo name
-//html url = html link
-//owner.login = username
-//description 
-//stargazer count = sort by 
-//
+
 var data = [
   {
     "id": 18221276,
