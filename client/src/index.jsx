@@ -19,8 +19,18 @@ class App extends React.Component {
     // TODO
     //make post req
     console.log('ajax post spot', term)
-    console.log(mockData)
-
+    $.ajax({
+      url: "http://127.0.0.1:1128/repos",
+      method: "POST",
+      data: JSON.stringify({username: term}),
+      contentType: "application/json; charset=utf-8",
+      success: function(data){
+        console.log('success', data)
+      },
+      error: function(data) {
+        console.log('error', data)
+      }
+    });
   }
 
   render () {
