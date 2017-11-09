@@ -31,18 +31,27 @@ let save = (obj) => {
       description: obj.description,
       stargazer: obj.stargazer
      })
-  console.log(`added repo ${obj.name} to db`)
+    console.log(`added repo ${obj.name} to db`)
     record.save()
- 
-  
 
- 
 }
-// save({
-//       name: 'bob',
-//       html: 'google.com',
-//       owner: 'testttttttttttttt',
-//       description: 'testttttttttttttt',
-//       stargazer: 5
-//      })
-module.exports.save = save;
+
+let get = (callback) => {
+  Repo.find({}, function(err, docs) {
+    if (!err){ 
+        callback(docs);
+        process.exit();
+    } else {throw err;}
+  });
+
+}
+
+module.exports = {
+  get: get,
+  save: save
+}
+
+
+
+
+
