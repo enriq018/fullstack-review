@@ -4,12 +4,16 @@ import $ from 'jquery';
 import Search from './components/Search.jsx';
 import RepoList from './components/RepoList.jsx';
 import mockData from './components/data.json';
-
+var body = {
+  backgroundColor:'aqua',
+ margin: 'auto',
+ padding:'5px'
+}
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      repos: mockData
+      repos: []
     };
 
   }
@@ -56,11 +60,11 @@ class App extends React.Component {
   }
 
   render () {
-    return (<div>
-      <h1>Github Fetcher</h1>
-      <RepoList repos={this.state.repos}/>
-      <Search onSearch={this.search.bind(this)}/>
-    </div>)
+    return (
+      <div style = {body}>
+        <Search onSearch={this.search.bind(this)}/>
+        <RepoList repos={this.state.repos}/>
+      </div>)
   }
 }
 

@@ -13,7 +13,7 @@ let repoSchema = mongoose.Schema({
   html: String,
   owner: String,
   description: String,
-  stargazer: Number
+  size: Number
   
 });
 
@@ -29,7 +29,7 @@ let save = (obj) => {
       html: obj.html_url,
       owner: obj.owner.login,
       description: obj.description,
-      stargazer: obj.size
+      size: obj.size
      })
     console.log(`added repo ${obj.name} to db`)
     record.save()
@@ -41,7 +41,7 @@ let save = (obj) => {
 
 let get = (callback) => {
   Repo.find({})
-  .sort({'stargazer': 'descending'})
+  .sort({'size': 'descending'})
   .limit(10)
   .exec(function(err, docs) {
     if (!err) {
