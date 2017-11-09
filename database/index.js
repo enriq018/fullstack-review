@@ -9,6 +9,7 @@ db.once('openUri()', function() {
 
 let repoSchema = mongoose.Schema({
   // TODO: your schema here!
+  id: {type: String, unique: true },
   name: String,
   html: String,
   owner: String,
@@ -25,6 +26,7 @@ let save = (obj) => {
   // the MongoDB
   
     var record = new Repo({
+      id: obj.id,
       name: obj.name,
       html: obj.html_url,
       owner: obj.owner.login,
