@@ -1,7 +1,7 @@
 const express = require('express');
 var bodyParser = require('body-parser')
 const getRepos = require('../helpers/github.js')
-const save = require('../database/index.js')
+const dbHelper = require('../database/index.js')
 let app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
@@ -17,8 +17,8 @@ app.post('/repos', function (req, res) {
   getRepos.getReposByUsername(req.body.username, function(data) {
     //Input into database 
 
-    JSON.parse(data).map(el => save.save(el))
-
+    JSON.parse(data).map(el => dbHelper.save(el))
+    res.status(201)
     res.send(req.body)
   })
   
@@ -31,6 +31,13 @@ app.post('/repos', function (req, res) {
 app.get('/repos', function (req, res) {
   // TODO - your code here!
   // This route should send back the top 25 repos
+  console.log('==================')
+
+  dbHelper.get(function(data) {
+    res.status(200);
+    res.send(data);
+  })
+
 });
 
 let port = 1128;
